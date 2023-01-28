@@ -23,7 +23,6 @@ export function calculateScore() {
     for (let i = 0; i < completed.length; i++) {
         results.push(parseInt(completed[i].id))
     }
-    writeUserData(results)
 
     //Associates your score with what it says about you
     var meaning;
@@ -50,4 +49,6 @@ export function calculateScore() {
 
     document.getElementById("questions").style.display = "none";
     document.getElementById("results").style.display = "block";
+    
+    writeUserData(results)
 }
