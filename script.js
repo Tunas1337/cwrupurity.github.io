@@ -1,10 +1,12 @@
-//Hides refresh button on load, could be optimized in the future
-window.onload = function() {
+import { writeUserData } from './firebase.js';
+
+//Hides results on load
+window.onload = function () {
     document.getElementById("results").style.display = "none";
-};
+}
 
 //Clears all the check boxes
-function clearBoxes(){
+export function clearBoxes() {
     var checkedBoxes = document.querySelectorAll('input:checked') //Get all the boxes that are checked
     for (var i = 0; i < checkedBoxes.length; i++) { //Run through each checked box and uncheck it
         checkedBoxes[i].checked = false;
@@ -12,9 +14,16 @@ function clearBoxes(){
 }
 
 //Calculates your score
-function calculateScore() {
+export function calculateScore() {
     var totalChecked = document.querySelectorAll('input[type="checkbox"]:checked') //Gets all the boxes that were checked
     var score = 100 - totalChecked.length //Subtracts the amount of boxes checked from 100, which results in the score
+
+    var completed = Array.from(totalChecked)
+    var results = []
+    for (let i = 0; i < completed.length; i++) {
+        results.push(parseInt(completed[i].id))
+    }
+    writeUserData(results)
 
     //Associates your score with what it says about you
     var meaning;
@@ -42,12 +51,3 @@ function calculateScore() {
     document.getElementById("questions").style.display = "none";
     document.getElementById("results").style.display = "block";
 }
-
-function myFunction() {
-    var x = document.getElementById("questions");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }

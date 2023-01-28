@@ -3,11 +3,18 @@
 <head>
     <title>CWRU Purity Test</title>
     <meta name="description" content="A purity test for the students of CWRU">
-    <meta name="keywords"
-        content="CWRU Purity Test">
+    <meta name="keywords" content="CWRU Purity Test">
     <meta name="theme-color" content="#08526e">
-    <link rel="icon" type="image/png" href="https://ih1.redbubble.net/image.3790536184.5741/st,small,507x507-pad,600x600,f8f8f8.jpg" />
-    <script src="script.js"></script>
+    <link rel="icon" type="image/png"
+        href="https://ih1.redbubble.net/image.3790536184.5741/st,small,507x507-pad,600x600,f8f8f8.jpg" />
+
+    <script type="module" src="script.js"></script>
+    <script type="module">
+        import { calculateScore, clearBoxes } from "./script.js";
+        window.calculateScore = calculateScore
+        window.clearBoxes = clearBoxes
+    </script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <html>
@@ -127,8 +134,8 @@
 
         <input class="button" id="submit" type="submit" value="Calculate Score" onClick="calculateScore()">
         <input class="button" id="reset" type="submit" value="Clear Boxes" onClick="clearBoxes()">
-    <div>
-    <h5>Code template by <a href="https://github.com/kacp3rrr" target="_blank">kacp3rrr</a></h5>
+        <div>
+            <h5>Code template by <a href="https://github.com/kacp3rrr" target="_blank">kacp3rrr</a></h5>
 </body>
 
 </html>
